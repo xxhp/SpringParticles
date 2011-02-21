@@ -10,7 +10,7 @@
 
 #import "SpringParticlesAppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldScene.h"
+#import "MainScene.h"
 #import "RootViewController.h"
 
 @implementation SpringParticlesAppDelegate
@@ -110,7 +110,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];		
+	[[CCDirector sharedDirector] runWithScene: [MainScene scene]];		
 }
 
 
