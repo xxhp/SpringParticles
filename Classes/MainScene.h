@@ -17,6 +17,8 @@
 @interface MainScene : CCLayer
 {
   NSMutableArray *mtpParticlesArray;
+  
+  CCSprite *mtpWindSprite;
 }
 
 // Returns a Scene that contains the HelloWorld as the only child

@@ -28,5 +28,8 @@
 - (void) addDampingForce;
 - (void) addForce: (CGPoint)aForce;
 
+- (void) addRepulsionForce: (Particle *)apParticle radius: (CGFloat)aRadius scale: (CGFloat)aScale;
+
+- (void) update;
 
 @end
