@@ -11,14 +11,18 @@
 #import "cocos2d.h"
 
 #import "Particle.h"
+#import "Spring.h"
 
 
 // HelloWorld Layer
 @interface MainScene : CCLayer
 {
   NSMutableArray *mtpParticlesArray;
+  NSMutableArray *mtpSpringsArray;
   
   CCSprite *mtpWindSprite;
+  
+  CGFloat mtWindMove;
 }
 
 // Returns a Scene that contains the HelloWorld as the only child

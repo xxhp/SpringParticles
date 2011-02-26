@@ -18,7 +18,15 @@
   CGFloat mtDamping;
   
   CCSprite *mtSprite;
+  
+  BOOL mtIsFixed;
 }
+
+// Position
+@property (readwrite) CGPoint pos;
+
+@property (readwrite) BOOL fixed;
+
 
 + (id) particleWithPositionAndVelocity: (CGPoint)aPos vel: (CGPoint)aVel;
 - (id) initWithPositionAndVelocity: (CGPoint)aPos vel: (CGPoint)aVel;

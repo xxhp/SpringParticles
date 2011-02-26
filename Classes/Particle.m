@@ -13,6 +13,9 @@
 
 @implementation Particle
 
+@synthesize pos = mtPos, fixed = mtIsFixed;
+
+
 + (id) particleWithPositionAndVelocity: (CGPoint)aPos vel: (CGPoint)aVel
 {
   return [[[self alloc] initWithPositionAndVelocity: aPos vel: aVel] autorelease];
@@ -25,6 +28,8 @@
   
   
   // Init values
+  mtIsFixed = NO;
+  
   mtPos = aPos;
   mtVel = aVel;
   
@@ -34,7 +39,7 @@
   
   mtSprite.position = spRandomScreen();
   
-  [self addChild: mtSprite];
+  // [self addChild: mtSprite];
   
   // Sprite size
   mtSprite.scale = spRandomBetween(0.5f, 1.0f);
@@ -68,7 +73,7 @@
 	// Calculate the difference & length 
 	
   CGPoint diff = ccpSub(mtPos, posOfForce);
-  CGFloat length = ccpLengthSQ(diff);
+  CGFloat length = ccpLength(diff);
 	
 	// Check close enough
 	
@@ -99,6 +104,10 @@
 
 - (void) update
 {
+  if (mtIsFixed == YES)
+    return;
+  
+    
   mtVel = ccpAdd(mtVel, mtAcc);
   mtPos = ccpAdd(mtPos, ccpMult(mtVel, 5.0f));
   
@@ -111,13 +120,13 @@
 
   if (mtPos.y < 0)
     mtPos.y = CC_WINSIZE().height;
-
+  
   if (mtPos.y > CC_WINSIZE().height)
     mtPos.y = 0;
   
   
   // Update sprite
-  mtSprite.position = mtPos;
+  // mtSprite.position = mtPos;
 }
 
 

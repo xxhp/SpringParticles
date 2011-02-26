@@ -45,19 +45,65 @@
   
   mtpParticlesArray = [[NSMutableArray alloc] init];
   
-  for (int i = 0; i < 10; i++)
+  
+  NSUInteger i;
+  
+  for (i = 0; i < 20; i++)
   {
-    Particle *p = [Particle particleWithPositionAndVelocity: spRandomScreen() vel: CGPointZero];
+    Particle *p = [Particle particleWithPositionAndVelocity: ccp((240+(i*10)), (0+(i*10))) vel: CGPointZero];
     
     [mtpParticlesArray addObject: p];
     
     [self addChild: p];
   }
   
+  // Update first particle for tree trunk
+  [[mtpParticlesArray objectAtIndex: 0] setFixed: YES];
+  [[mtpParticlesArray objectAtIndex: 0] setPos: ccp(240, 0)];
+  
+  
+  mtpSpringsArray = [[NSMutableArray alloc] init];
+  
+  for (i = 0; i < 20; i++)
+  {
+    Spring *s = [[[Spring alloc] init] autorelease];
+    
+    if (i < 3)
+    {
+      [s setDistance: 40.0f];
+      [s setSpringiness: 0.1f];
+      
+      [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
+      [s setParticleB: [mtpParticlesArray objectAtIndex: ((i + 1) % [mtpParticlesArray count])]];
+    }
+    else if (i > 3 && i <  7)
+    {
+      [s setDistance: 40.0f];
+      [s setSpringiness: 0.08f];
+      
+      [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
+      [s setParticleB: [mtpParticlesArray objectAtIndex: 2]];
+    }
+    else if (i > 3 && i <  15)
+    {
+      [s setDistance: 40.0f];
+      [s setSpringiness: 0.08f];
+      
+      [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
+      [s setParticleB: [mtpParticlesArray objectAtIndex: 3]];
+    }    
+    
+    
+    [mtpSpringsArray addObject: s];
+    
+    [self addChild: s];   
+  }
+  
+  
   // Wind elements
   mtpWindSprite = [CCSprite spriteWithFile: @"Icon-Small.png"];
   
-  mtpWindSprite.position = ccp(CC_WINSIZE().width/2, CC_WINSIZE().height);
+  mtpWindSprite.position = ccp(0, 0);
   
   [self addChild: mtpWindSprite z: 99];
   
@@ -92,13 +138,34 @@
     }
   }
   
+  
+  // Springs
+  for (i = 0; i < [mtpSpringsArray count]; i++)
+  {
+    [[mtpSpringsArray objectAtIndex: i] update];
+	}
+  
+  
+  mtWindMove += 0.02f;
+  
   for (i = 0; i < count; i++)
-  {		
-    [[mtpParticlesArray objectAtIndex: i] addForce: ccp((0.2f * cos(mtpWindSprite.position.x * 0.5f)), -0.05f)];
+  {
+    [[mtpParticlesArray objectAtIndex: i] addForce: ccp((0.2f * cos(mtWindMove * 0.5f)), 0.05f)];
     
     [[mtpParticlesArray objectAtIndex: i] addDampingForce];
     
     [[mtpParticlesArray objectAtIndex: i] update];
+	}
+  
+  
+  mtpWindSprite.position = ccp((cos(mtWindMove*0.5f)+1)*(CC_WINSIZE().width/2)+5, 0);
+}
+
+- (void) draw
+{
+  for (int i = 0; i < [mtpSpringsArray count]; i++)
+  {
+    [[mtpSpringsArray objectAtIndex: i] draw];
 	}
 }
 
@@ -114,9 +181,9 @@
 
 - (void) ccTouchMoved: (UITouch*)touch withEvent: (UIEvent *)event
 {
-  CGPoint touchLocation = [self convertTouchToNodeSpace: touch];
-    
-  mtpWindSprite.position = ccp(touchLocation.x, CC_WINSIZE().height);
+  // CGPoint touchLocation = [self convertTouchToNodeSpace: touch];
+  //    
+  // mtpWindSprite.position = ccp(touchLocation.x, 0);
 }
 
 - (void) ccTouchEnded: (UITouch *)touch withEvent: (UIEvent *)event
@@ -142,6 +209,7 @@
 - (void) dealloc
 {
   [mtpParticlesArray release];
+  [mtpSpringsArray release];
   
   [mtpWindSprite release];
   
