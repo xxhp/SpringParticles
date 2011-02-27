@@ -1,1 +1,15 @@
 == Spring Particles
+
+Animation of particles that follow the movement of wind. Example for iPhone based on the examples of <http://www.makingthingsmove.org/>
+
+
+== Install
+
+These example require:
+
+- Cocos2d framework http://www.cocos2d-iphone.org/ 
+
+
+== Suggestions
+
+Give me feedback, ideas, suggestions or errors in afernasa[at]gmail[dot]com

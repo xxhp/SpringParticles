@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -271,8 +273,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
-									<integer>4</integer>
+									<integer>20</integer>
+									<integer>19</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -307,14 +309,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainScene.m</string>
+								<string>windDirection.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -322,11 +322,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainScene.m</string>
+										<string>windDirection.png</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6C151B0E131AB6D200FBA6CD</string>
+										<string>6C151B21131ABB1900FBA6CD</string>
 										<key>history</key>
 										<array>
 											<string>6C2894031312EC540014F213</string>
@@ -360,13 +360,14 @@
 											<string>6C151AEC131AB53F00FBA6CD</string>
 											<string>6C151AEE131AB53F00FBA6CD</string>
 											<string>6C151AFD131AB57200FBA6CD</string>
-											<string>6C151AFE131AB57200FBA6CD</string>
 											<string>6C151AFF131AB57200FBA6CD</string>
 											<string>6C151B00131AB57200FBA6CD</string>
 											<string>6C151B01131AB57200FBA6CD</string>
-											<string>6C151B06131AB5C300FBA6CD</string>
 											<string>6C151B07131AB5C300FBA6CD</string>
-											<string>6C151B0D131AB6D200FBA6CD</string>
+											<string>6C151B1D131ABB1900FBA6CD</string>
+											<string>6C151B1E131ABB1900FBA6CD</string>
+											<string>6C151B1F131ABB1900FBA6CD</string>
+											<string>6C151B20131ABB1900FBA6CD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -564,10 +565,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6C2893BA13129C2F0014F213</string>
 		<string>/Users/afernasa/af/cocos2d/SpringParticles/SpringParticles.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>5 59 1223 719 0 0 1280 778 </string>
@@ -941,7 +942,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
