@@ -8,3 +8,16 @@
 
 #import "Utils.h"
 
+@implementation CCAlphaSprite
+
+- (void) draw
+{
+  glEnable(GL_ALPHA_TEST);
+  glAlphaFunc(GL_GREATER, 0.0f);
+  
+  [super draw];
+  
+  glDisable(GL_ALPHA_TEST);
+}
+
+@end

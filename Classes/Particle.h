@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+#import "Utils.h"
+
+
 @interface Particle : CCNode
 {
   CGPoint mtPos;
@@ -17,8 +20,8 @@
   
   CGFloat mtDamping;
   
-  CCSprite *mtSprite;
-  CCSprite *mtSpriteGlow;
+  CCAlphaSprite *mtSprite;
+  CCAlphaSprite *mtSpriteGlow;
   
   BOOL mtIsFixed;
   BOOL mtIsSpring;

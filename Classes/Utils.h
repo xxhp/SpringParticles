@@ -36,3 +36,10 @@ static inline CGPoint spRandomScreen()
 {
   return ccp(spRandom(CC_WINSIZE().width), spRandom(CC_WINSIZE().height));
 }
+
+
+// http://www.cocos2d-iphone.org/forum/topic/4348/page/3
+@interface CCAlphaSprite : CCSprite
+
+- (void) draw;
+@end

@@ -43,14 +43,6 @@
   self.isTouchEnabled = YES;
   
   
-  // Background
-  CCSprite *bg = [CCSprite spriteWithFile: @"springParticlesBg.png"];
-  
-  bg.position = ccp(240, 160);
-  
-  // [self addChild: bg];
-  
-  
   mtpParticlesArray = [[NSMutableArray alloc] init];
   
   NSUInteger i;
@@ -67,7 +59,7 @@
   // Tree trunks
   // 1
   [[mtpParticlesArray objectAtIndex: 0] setFixed: YES];
-  [[mtpParticlesArray objectAtIndex: 0] setPos: ccp(240, 0)];
+  [[mtpParticlesArray objectAtIndex: 0] setPos: ccp(250, 0)];
   
   // 2
   [[mtpParticlesArray objectAtIndex: 10] setFixed: YES];
@@ -75,7 +67,7 @@
   
   // 3
   [[mtpParticlesArray objectAtIndex: 20] setFixed: YES];
-  [[mtpParticlesArray objectAtIndex: 20] setPos: ccp(50, 0)];
+  [[mtpParticlesArray objectAtIndex: 20] setPos: ccp(85, 0)];
   
   // 4
   [[mtpParticlesArray objectAtIndex: 40] setFixed: YES];
@@ -140,7 +132,7 @@
   
   
   // Wind elements
-  mtpWindSprite = [CCSprite spriteWithFile: @"circle1.png"];
+  mtpWindSprite = [CCSprite spriteWithFile: @"windDirection.png"];
   
   mtpWindSprite.position = ccp(0, 0);
   

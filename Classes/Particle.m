@@ -8,8 +8,6 @@
 
 #import "Particle.h"
 
-#import "Utils.h"
-
 
 @implementation Particle
 
@@ -43,7 +41,7 @@
   CGFloat currentScale = spRandomBetween(0.5f, 1.0f);
   
   // Sprite
-  mtSprite = [CCSprite spriteWithFile: [NSString stringWithFormat: @"%@.png", currentName]];
+  mtSprite = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"%@.png", currentName]];
   
   mtSprite.position = currentPos;
   mtSprite.scale = currentScale;
@@ -51,7 +49,7 @@
   [self addChild: mtSprite z: 2];
   
   // Sprite glow
-  mtSpriteGlow = [CCSprite spriteWithFile: [NSString stringWithFormat: @"%@Glow.png", currentName]];
+  mtSpriteGlow = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"%@glow.png", currentName]];
   
   mtSpriteGlow.position = currentPos;
   mtSpriteGlow.scale = currentScale;
