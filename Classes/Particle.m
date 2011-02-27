@@ -13,7 +13,7 @@
 
 @implementation Particle
 
-@synthesize pos = mtPos, fixed = mtIsFixed;
+@synthesize pos = mtPos, fixed = mtIsFixed, spring = mtIsSpring;
 
 
 + (id) particleWithPositionAndVelocity: (CGPoint)aPos vel: (CGPoint)aVel
@@ -29,21 +29,39 @@
   
   // Init values
   mtIsFixed = NO;
+  mtIsSpring = NO;
   
   mtPos = aPos;
   mtVel = aVel;
   
   mtDamping = CCRANDOM_0_1();
-    
-  mtSprite = [CCSprite spriteWithFile: @"Icon-Small-50.png"];
   
-  mtSprite.position = spRandomScreen();
   
-  // [self addChild: mtSprite];
+  // Temp values for init particle
+  NSString *currentName = [NSString stringWithFormat: @"circle%i", (int)spRandomBetween(1, 4)];
+  CGPoint currentPos = spRandomScreen(); 
+  CGFloat currentScale = spRandomBetween(0.5f, 1.0f);
   
-  // Sprite size
-  mtSprite.scale = spRandomBetween(0.5f, 1.0f);
-    
+  // Sprite
+  mtSprite = [CCSprite spriteWithFile: [NSString stringWithFormat: @"%@.png", currentName]];
+  
+  mtSprite.position = currentPos;
+  mtSprite.scale = currentScale;
+  
+  [self addChild: mtSprite z: 2];
+  
+  // Sprite glow
+  mtSpriteGlow = [CCSprite spriteWithFile: [NSString stringWithFormat: @"%@Glow.png", currentName]];
+  
+  mtSpriteGlow.position = currentPos;
+  mtSpriteGlow.scale = currentScale;
+  
+  [self addChild: mtSpriteGlow z: 1];
+  
+  [mtSpriteGlow runAction: [CCRepeatForever actionWithAction: [CCSequence actions: 
+                                                               [CCFadeTo actionWithDuration: spRandomBetween(1.25f, 8.0f) opacity: 255],
+                                                               [CCFadeTo actionWithDuration: spRandomBetween(1.0f, 5.0f) opacity: 0],
+                                                               nil]]];
   
   return self;
 }
@@ -111,28 +129,32 @@
   mtVel = ccpAdd(mtVel, mtAcc);
   mtPos = ccpAdd(mtPos, ccpMult(mtVel, 5.0f));
   
-  // Wrap
-  if (mtPos.x < 0)
-    mtPos.x = CC_WINSIZE().width;
+  if (mtIsSpring == NO)
+  {
+    // Wrap
+    if (mtPos.x < 0)
+      mtPos.x = CC_WINSIZE().width;
 
-  if (mtPos.x > CC_WINSIZE().width)
-    mtPos.x = 0;
+    if (mtPos.x > CC_WINSIZE().width)
+      mtPos.x = 0;
 
-  if (mtPos.y < 0)
-    mtPos.y = CC_WINSIZE().height;
+    if (mtPos.y < 0)
+      mtPos.y = CC_WINSIZE().height;
+    
+    if (mtPos.y > CC_WINSIZE().height)
+      mtPos.y = 0;
+  }
   
-  if (mtPos.y > CC_WINSIZE().height)
-    mtPos.y = 0;
   
-  
-  // Update sprite
-  // mtSprite.position = mtPos;
+  // Update sprite and glow
+  mtSpriteGlow.position = mtSprite.position = mtPos;
 }
 
 
 - (void) dealloc
 {
   [mtSprite release];
+  [mtSpriteGlow release];
   
   [super dealloc];
 }

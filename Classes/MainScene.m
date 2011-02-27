@@ -43,56 +43,95 @@
   self.isTouchEnabled = YES;
   
   
-  mtpParticlesArray = [[NSMutableArray alloc] init];
+  // Background
+  CCSprite *bg = [CCSprite spriteWithFile: @"springParticlesBg.png"];
   
+  bg.position = ccp(240, 160);
+  
+  // [self addChild: bg];
+  
+  
+  mtpParticlesArray = [[NSMutableArray alloc] init];
   
   NSUInteger i;
   
-  for (i = 0; i < 20; i++)
+  for (i = 0; i < 50; i++)
   {
-    Particle *p = [Particle particleWithPositionAndVelocity: ccp((240+(i*10)), (0+(i*10))) vel: CGPointZero];
+    Particle *p = [Particle particleWithPositionAndVelocity: spRandomScreen() vel: CGPointZero];
     
     [mtpParticlesArray addObject: p];
     
     [self addChild: p];
   }
   
-  // Update first particle for tree trunk
+  // Tree trunks
+  // 1
   [[mtpParticlesArray objectAtIndex: 0] setFixed: YES];
   [[mtpParticlesArray objectAtIndex: 0] setPos: ccp(240, 0)];
   
+  // 2
+  [[mtpParticlesArray objectAtIndex: 10] setFixed: YES];
+  [[mtpParticlesArray objectAtIndex: 10] setPos: ccp(100, 0)];
+  
+  // 3
+  [[mtpParticlesArray objectAtIndex: 20] setFixed: YES];
+  [[mtpParticlesArray objectAtIndex: 20] setPos: ccp(50, 0)];
+  
+  // 4
+  [[mtpParticlesArray objectAtIndex: 40] setFixed: YES];
+  [[mtpParticlesArray objectAtIndex: 40] setPos: ccp(350, 0)];
+
   
   mtpSpringsArray = [[NSMutableArray alloc] init];
   
-  for (i = 0; i < 20; i++)
+  for (i = 0; i < 50; i++)
   {
     Spring *s = [[[Spring alloc] init] autorelease];
     
-    if (i < 3)
+    // 1
+    if (i < 5)
     {
-      [s setDistance: 40.0f];
+      [s setDistance: 50.0f];
       [s setSpringiness: 0.1f];
+      
+      [[mtpParticlesArray objectAtIndex: i] setSpring: YES];
       
       [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
       [s setParticleB: [mtpParticlesArray objectAtIndex: ((i + 1) % [mtpParticlesArray count])]];
     }
-    else if (i > 3 && i <  7)
+    // 2
+    else if (i > 9 && i <  15)
     {
-      [s setDistance: 40.0f];
+      [s setDistance: 30.0f];
       [s setSpringiness: 0.08f];
       
+      [[mtpParticlesArray objectAtIndex: i] setSpring: YES];
+      
       [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
-      [s setParticleB: [mtpParticlesArray objectAtIndex: 2]];
+      [s setParticleB: [mtpParticlesArray objectAtIndex: i+1]];
     }
-    else if (i > 3 && i <  15)
+    // 3
+    else if (i > 19 && i <  23)
     {
-      [s setDistance: 40.0f];
-      [s setSpringiness: 0.08f];
+      [s setDistance: 60.0f];
+      [s setSpringiness: 0.01f];
+      
+      [[mtpParticlesArray objectAtIndex: i] setSpring: YES];
       
       [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
-      [s setParticleB: [mtpParticlesArray objectAtIndex: 3]];
-    }    
-    
+      [s setParticleB: [mtpParticlesArray objectAtIndex: i+1]];
+    }
+    // 4
+    else if (i > 39 && i <  45)
+    {
+      [s setDistance: 50.0f];
+      [s setSpringiness: 0.05f];
+      
+      [[mtpParticlesArray objectAtIndex: i] setSpring: YES];
+      
+      [s setParticleA: [mtpParticlesArray objectAtIndex: i]];
+      [s setParticleB: [mtpParticlesArray objectAtIndex: i+1]];
+    }
     
     [mtpSpringsArray addObject: s];
     
@@ -101,7 +140,7 @@
   
   
   // Wind elements
-  mtpWindSprite = [CCSprite spriteWithFile: @"Icon-Small.png"];
+  mtpWindSprite = [CCSprite spriteWithFile: @"circle1.png"];
   
   mtpWindSprite.position = ccp(0, 0);
   
@@ -132,7 +171,7 @@
   {
     for (j = 0; j < i; j++)
     {
-      [[mtpParticlesArray objectAtIndex: i] addRepulsionForce: [mtpParticlesArray objectAtIndex: j] 
+      [[mtpParticlesArray objectAtIndex: i] addRepulsionForce: [mtpParticlesArray objectAtIndex: j]
                                                        radius: 200.0f 
                                                         scale: 0.1f];
     }
@@ -150,6 +189,8 @@
   
   for (i = 0; i < count; i++)
   {
+    // [[mtpParticlesArray objectAtIndex: i] addForce: ccp((0.2f * cos(mtpWindSprite.position.x * 0.5f)), 0.05f)];
+    
     [[mtpParticlesArray objectAtIndex: i] addForce: ccp((0.2f * cos(mtWindMove * 0.5f)), 0.05f)];
     
     [[mtpParticlesArray objectAtIndex: i] addDampingForce];
