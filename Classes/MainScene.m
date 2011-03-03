@@ -43,6 +43,18 @@
   self.isTouchEnabled = YES;
   
   
+  // Background
+  CCSprite *bg = [CCSprite spriteWithFile: @"SpringParticlesBg.png"];
+  
+  bg.position = ccp(CC_WINSIZE().width/2, CC_WINSIZE().height/2);
+  
+  [self addChild: bg z: 0];
+  
+  
+  // These SpriteFrames are going to be used all over the app
+  [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"circles.plist"];
+  
+  
   mtpParticlesArray = [[NSMutableArray alloc] init];
   
   NSUInteger i;
@@ -132,11 +144,11 @@
   
   
   // Wind elements
-  mtpWindSprite = [CCSprite spriteWithFile: @"windDirection.png"];
+  // mtpWindSprite = [CCSprite spriteWithFile: @"windDirection.png"];
   
-  mtpWindSprite.position = ccp(0, 0);
+  // mtpWindSprite.position = ccp(0, 0);
   
-  [self addChild: mtpWindSprite z: 99];
+  // [self addChild: mtpWindSprite z: 99];
   
   
   [self scheduleUpdate];
@@ -191,7 +203,7 @@
 	}
   
   
-  mtpWindSprite.position = ccp((cos(mtWindMove*0.5f)+1)*(CC_WINSIZE().width/2)+5, 0);
+  // mtpWindSprite.position = ccp((cos(mtWindMove*0.5f)+1)*(CC_WINSIZE().width/2)+5, 0);
 }
 
 - (void) draw

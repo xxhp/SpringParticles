@@ -35,31 +35,31 @@
   mtDamping = CCRANDOM_0_1();
   
   
-  // Temp values for init particle
-  NSString *currentName = [NSString stringWithFormat: @"circle%i", (int)spRandomBetween(1, 4)];
-  CGPoint currentPos = spRandomScreen(); 
-  CGFloat currentScale = spRandomBetween(0.5f, 1.0f);
-  
   // Sprite
-  mtSprite = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"%@.png", currentName]];
+  // mtSprite = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"circle%@.png", (int)spRandomBetween(1, 4)]];
   
-  mtSprite.position = currentPos;
-  mtSprite.scale = currentScale;
+  mtSprite = [CCAlphaSprite spriteWithSpriteFrameName: [NSString stringWithFormat: @"circle%i.png", (int)spRandomBetween(1, 10)]]; 
+  
+  mtSprite.position = spRandomScreen();
+  mtSprite.scale = spRandomBetween(0.5f, 1.0f);
   
   [self addChild: mtSprite z: 2];
   
-  // Sprite glow
-  mtSpriteGlow = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"%@glow.png", currentName]];
   
-  mtSpriteGlow.position = currentPos;
-  mtSpriteGlow.scale = currentScale;
-  
-  [self addChild: mtSpriteGlow z: 1];
-  
-  [mtSpriteGlow runAction: [CCRepeatForever actionWithAction: [CCSequence actions: 
-                                                               [CCFadeTo actionWithDuration: spRandomBetween(1.25f, 8.0f) opacity: 255],
-                                                               [CCFadeTo actionWithDuration: spRandomBetween(1.0f, 5.0f) opacity: 0],
-                                                               nil]]];
+  /*
+    // Sprite glow
+    mtSpriteGlow = [CCAlphaSprite spriteWithFile: [NSString stringWithFormat: @"%@glow.png", currentName]];
+    
+    mtSpriteGlow.position = currentPos;
+    mtSpriteGlow.scale = currentScale;
+    
+    [self addChild: mtSpriteGlow z: 1];
+    
+    [mtSpriteGlow runAction: [CCRepeatForever actionWithAction: [CCSequence actions: 
+                                                                 [CCFadeTo actionWithDuration: spRandomBetween(1.25f, 8.0f) opacity: 255],
+                                                                 [CCFadeTo actionWithDuration: spRandomBetween(1.0f, 5.0f) opacity: 0],
+                                                                 nil]]];
+  */
   
   return self;
 }
@@ -144,15 +144,14 @@
   }
   
   
-  // Update sprite and glow
-  mtSpriteGlow.position = mtSprite.position = mtPos;
+  // Update sprite
+  mtSprite.position = mtPos;
 }
 
 
 - (void) dealloc
 {
   [mtSprite release];
-  [mtSpriteGlow release];
   
   [super dealloc];
 }

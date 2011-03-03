@@ -21,7 +21,6 @@
   CGFloat mtDamping;
   
   CCAlphaSprite *mtSprite;
-  CCAlphaSprite *mtSpriteGlow;
   
   BOOL mtIsFixed;
   BOOL mtIsSpring;
