@@ -326,7 +326,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>6CB18406132061C40073F4A0</string>
+										<string>6CB18440132064F90073F4A0</string>
 										<key>history</key>
 										<array>
 											<string>6C2894031312EC540014F213</string>
@@ -350,17 +350,17 @@
 											<string>6C1A2FB7131957B5002A4E5E</string>
 											<string>6C1A30D713199742002A4E5E</string>
 											<string>6C1A312B1319BA1D002A4E5E</string>
-											<string>6C1A317A1319D088002A4E5E</string>
 											<string>6C151A6D131A735800FBA6CD</string>
 											<string>6C151AE5131AB23C00FBA6CD</string>
-											<string>6C151AE6131AB23C00FBA6CD</string>
-											<string>6C151B07131AB5C300FBA6CD</string>
-											<string>6CB183DC13205EB70073F4A0</string>
 											<string>6CB183F2132060CC0073F4A0</string>
-											<string>6CB183F8132060F90073F4A0</string>
 											<string>6CB183F9132060F90073F4A0</string>
 											<string>6CB18400132061790073F4A0</string>
-											<string>6CB18401132061790073F4A0</string>
+											<string>6CB184091320624B0073F4A0</string>
+											<string>6CB18421132063390073F4A0</string>
+											<string>6CB18422132063390073F4A0</string>
+											<string>6CB18423132063390073F4A0</string>
+											<string>6CB18424132063390073F4A0</string>
+											<string>6CB1842B132063B70073F4A0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -418,9 +418,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>6CB183D113205D040073F4A0</string>
+				<string>6CB18435132064B40073F4A0</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>6CB183D213205D040073F4A0</string>
+				<string>6CB18436132064B40073F4A0</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -558,9 +558,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>6C2893BA13129C2F0014F213</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/afernasa/af/cocos2d/SpringParticles/SpringParticles.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -641,7 +641,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>6C2893BA13129C2F0014F213</string>
-				<string>6CB183D313205D040073F4A0</string>
+				<string>6CB18437132064B40073F4A0</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -763,13 +763,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>6CB183E8132060210073F4A0</string>
+				<string>6CB18438132064B40073F4A0</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>6CB183E9132060210073F4A0</string>
-				<string>6CB183EA132060210073F4A0</string>
-				<string>6CB183EB132060210073F4A0</string>
-				<string>6CB183EC132060210073F4A0</string>
-				<string>6CB183ED132060210073F4A0</string>
+				<string>6CB18439132064B40073F4A0</string>
+				<string>6CB1843A132064B40073F4A0</string>
+				<string>6CB1843B132064B40073F4A0</string>
+				<string>6CB1843C132064B40073F4A0</string>
+				<string>6CB1843D132064B40073F4A0</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -925,7 +925,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>6CB183EE132060210073F4A0</string>
+				<string>6CB1843E132064B40073F4A0</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -935,7 +935,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

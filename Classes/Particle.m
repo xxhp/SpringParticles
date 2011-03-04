@@ -42,7 +42,7 @@
   
   mtSprite.position = spRandomScreen();
   mtSprite.scale = spRandomBetween(0.5f, 1.0f);
-  
+    
   [self addChild: mtSprite z: 2];
   
   
@@ -124,7 +124,7 @@
     return;
   
     
-  mtVel = ccpAdd(mtVel, mtAcc);
+  mtVel = ccpAdd(mtVel, ccpMult(mtAcc, mtSprite.scale));
   mtPos = ccpAdd(mtPos, ccpMult(mtVel, 5.0f));
   
   if (mtIsSpring == NO)
